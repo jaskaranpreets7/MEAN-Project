@@ -1,0 +1,42 @@
+<!-- <div>
+    <h2>My Heroes</h2>
+        <ul class="heroes">
+            <li *ngFor="let h of hero">
+                <a routerLink="/detail/{{h.id}}">
+                </a> 
+                <span class="badge">{{h.heroId}}</span><i>{{h.heroName}}</i>
+            </li>
+        </ul>
+</div> -->
+
+<div class="row">
+    <div class= "col-md-12">
+        <div class="panel panel-primary" style="background-color:rgba(250,250,250,0.7)"> 
+            <div class="panel-heading text-center">
+                <h4>My Heroes</h4>
+            </div>
+            <div class="panel-body">
+                <table class="table table-hover bordered">
+                    <th class="text-center"> <em> Hero Id  </em> </th>
+                    <th class="text-center"> <em> Hero Name </em> </th>
+                    <th class="text-center"> <em> Universe </em> </th>
+                    <th class="text-center"> <em> Special Power </em> </th>
+                    <th class="text-center"> <em> Description </em> </th>
+                <tr class="text-center" *ngFor="let h of hero">
+                    <td>{{h.heroId}}</td>
+                    <td>{{h.heroName}}</td>
+                    <td>{{h.universe}}</td>
+                    <td>{{h.specialPower}}</td>
+                    <td>{{h.description}}</td>
+                </tr>
+                </table>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+

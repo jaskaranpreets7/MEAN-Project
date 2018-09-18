@@ -1,0 +1,51 @@
+<h3>Top Heroes</h3>
+<div class="grid grid-pad">
+  <a *ngFor="let hero of heroes" class="col-1-4" >
+    <div class="module">
+        <h4>{{hero.heroName}}</h4>
+    </div>
+  </a>
+</div>
+<div class="container">
+  <div class="btn-group row"  role="group">
+    <button type="button" class="btn btn-secondary btn-lg text-center" data-toggle="modal" data-target="#myModal">Add Hero</button>
+    <button type="button" class="btn btn-secondary btn-lg" data-toggle="modal" data-target="#myModal">Delete Hero</button>
+  </div>
+</div>
+
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+  
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Add Your Hero</h4>
+        </div>
+        <div class="modal-body">
+          <label>Hero Id: </label>
+          <input type="number" class="form-control"><br/>
+
+          <label>Hero Name:</label>
+          <input type="text" class="form-control"><br/>
+
+          <label>Universe</label>
+          <input type="text" class="form-control"><br/>
+
+          <label>Special Power</label>
+          <input type="text" class="form-control"><br/>
+
+          <label>Description</label>
+          <input type="text" class="form-control"><br/>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Add</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+  
+    </div>
+  </div><br/>
+  <div>
+      <!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Delete Hero</button> -->
+  </div>
