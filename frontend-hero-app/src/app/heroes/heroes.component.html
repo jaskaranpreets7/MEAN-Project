@@ -10,33 +10,68 @@
 </div> -->
 
 <div class="row">
-    <div class= "col-md-12">
+    <div class= "col-md text-center">
         <div class="panel panel-primary" style="background-color:rgba(250,250,250,0.7)"> 
             <div class="panel-heading text-center">
                 <h4>My Heroes</h4>
             </div>
-            <div class="panel-body">
-                <table class="table table-hover bordered">
+            <div class="panel-body form-group d-block text-center">
+                <table class="table table-hover bordered ">
                     <th class="text-center"> <em> Hero Id  </em> </th>
                     <th class="text-center"> <em> Hero Name </em> </th>
                     <th class="text-center"> <em> Universe </em> </th>
                     <th class="text-center"> <em> Special Power </em> </th>
                     <th class="text-center"> <em> Description </em> </th>
+                    <th class="text-center"> <em> Edit/Delete</em> </th>
                 <tr class="text-center" *ngFor="let h of hero">
                     <td>{{h.heroId}}</td>
                     <td>{{h.heroName}}</td>
                     <td>{{h.universe}}</td>
                     <td>{{h.specialPower}}</td>
                     <td>{{h.description}}</td>
+                    <td>
+                        <button type="button" class="btn btn-danger btn-md" data-toggle="modal">Delete</button>
+                    </td>
                 </tr>
                 </table>
-
-
             </div>
-
         </div>
-
     </div>
-
 </div>
+<br/>
+<div><button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal">Add </button></div>
+
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+  
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Add Your Hero</h4>
+        </div>
+        <div class="modal-body">
+          <label>Hero Id: </label>
+          <input type="number" class="form-control"><br/>
+
+          <label>Hero Name:</label>
+          <input type="text" class="form-control"><br/>
+
+          <label>Universe</label>
+          <input type="text" class="form-control"><br/>
+
+          <label>Special Power</label>
+          <input type="text" class="form-control"><br/>
+
+          <label>Description</label>
+          <input type="text" class="form-control"><br/>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Add</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+  
+    </div>
+  </div>
 

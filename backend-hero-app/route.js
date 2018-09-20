@@ -6,7 +6,6 @@ var heroesDetails = require('./beans/heroesDetails');
 route.get('/heroes',function(req,res,next){
 
     heoresDAL().then(function(details){
-        console.log(" hi route")
         res.json(details);
     }).catch(function(err){
         next(err);
