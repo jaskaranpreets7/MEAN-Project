@@ -8,8 +8,9 @@ CREATE TABLE HeroesDetails(
 heroId INT(4) PRIMARY KEY AUTO_INCREMENT,
 heroName VARCHAR (20) NOT NULL,
 universe VARCHAR(20) NOT NULL,
-description VARCHAR(200) NOT NULL,
-specialPower VARCHAR(50)NOT NULL
+description  VARCHAR(200) NOT NULL,
+specialPower VARCHAR(50)NOT NULL,
+intId INT(4) KEY AUTO_INCREMENT
 );
 
 insert into HeroesDetails(heroId,heroName,universe,specialPower,description) values('0001','Spiderman','Marvel','Web','Student');
