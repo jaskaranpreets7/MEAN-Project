@@ -7,12 +7,13 @@
           <a class="navbar-brand"[routerLink] ="['/home']">{{title}}</a>
         </div>
     <ul class="navbar-nav mr-auto">
+      <li>
+          <a [routerLink]="['/heroes']">Heroes</a>
+      </li>
       <li class="nav-item">
         <a [routerLink]="['/dashboard']">Dashboard</a>
       </li>
-      <li>
-        <a [routerLink]="['/heroes']">Heroes</a>
-      </li>
+     
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">

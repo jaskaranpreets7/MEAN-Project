@@ -18,8 +18,12 @@ export class HeroesComponent implements OnInit {
           error => {
             alert( 'ERROR' );
           });
-          console.log(res => this.hero = res);
   }
+
+giveLike(){
+  alert('You liked our Heroes ' )
+}
+
 
   ngOnInit() {
   }

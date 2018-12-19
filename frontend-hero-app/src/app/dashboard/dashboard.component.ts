@@ -16,7 +16,32 @@ heroes: any[] ;
 
   getHeroes(): void {
    this.heroService.getHeroes(null)
-      .then(heroes => this.heroes = heroes);
+      .then((heroes) => {
+        this.heroes = heroes;
+      });
+  }
+
+
+
+  sortByName = (heroes) => {
+    if (this.heroes.length > 0) {
+      this.heroes.sort((a, b) => {
+        const val1 = a.heroName;
+        const val2 = b.heroName;
+        return val1 === val2 ? 0 : val1 > val2 ? 1 : -1 ;
+      });
+    }
+    return this.heroes;
+  }
+  sortById = (heroes) => {
+    if (this.heroes.length > 0) {
+      this.heroes.sort((a, b) => {
+        const val1 = a.heroId;
+        const val2 = b.heroId;
+        return val1 === val2 ? 0 : val1 > val2 ? 1 : -1 ;
+      });
+    }
+    return this.heroes;
   }
 
   ngOnInit() {

@@ -1,11 +1,15 @@
-<div *ngIf="hero">
-        <h2>{{ this.hero.Heroes[0].name }} Details</h2>
-        <div>
-            <span>id: </span>{{hero.id}}
-        </div>
-        <div>
-            <label>name: </label>
-            <input [(ngModel)]="hero.name" placeholder="">
-        </div>
-        <button (click)="goBack()">go back</button>
+<div *ngIf="hero.length > 0">
+    <div>
+            <h2>{{ hero.heroName }} Details</h2>
+            <div>
+                <span>id: </span><span><em>{{hero.heroId}}</em></span>
+            </div>
+            <div>
+                <label>name: </label>
+                <span><em>{{hero.heroName}}</em></span> 
+            </div>
+            <button (click)="goBack()">go back</button>
+
+    </div>
+        
 </div>
