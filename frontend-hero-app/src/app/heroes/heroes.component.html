@@ -16,9 +16,6 @@
                 <h4 class="text-center">My Heroes</h4>
                 <div class="text-right add"><em><a href="" data-toggle="modal" data-target="#myModal">Add more heroes</a></em></div>
             </div>
-           
-
-
             <div class="panel-body form-group d-block text-center">
                 <table class="table table-hover bordered ">
                     <th class="text-center"> <em> Hero Id  </em> </th>
@@ -27,14 +24,15 @@
                     <th class="text-center"> <em> Special Power </em> </th>
                     <th class="text-center"> <em> Description </em> </th>
                     <th class="text-center"> <em> Give likes </em> </th>
-                <tr class="text-center" *ngFor="let h of hero">
+                <tr class="text-center" *ngFor="let h of heroes">
                     <td >{{h.heroId}}</td>
                     <td><a [routerLink]="['/detail/', h.heroId]">{{h.heroName}}</a></td>
                     <td>{{h.universe}}</td>
                     <td>{{h.specialPower}}</td>
                     <td>{{h.description}}</td>
+                    <td>{{h.count}}</td>
                     <td>
-                        <button type="button" class="btn btn-primary btn-md" data-toggle="modal"(click)="giveLike()">Like!</button>
+                        <button type="button" class="btn btn-primary btn-md" data-toggle="modal"(click)="countLike(h.heroName)">Like!</button>
                     </td>
                 </tr>
                 </table>

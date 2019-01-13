@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Http, Response } from '@angular/http';
 
 
-import { MessageService } from './message.service';
+
 import { catchError, map, tap } from 'rxjs/operators';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
@@ -12,7 +12,7 @@ import 'rxjs/add/operator/catch';
 @Injectable()
 export class HeroService {
 
-  constructor( private http: Http, private messageService: MessageService) {}
+  constructor( private http: Http) {}
 
   getHeroes(data: any): Promise<any> {
     return this.http.get('http://localhost:3000/heroes', data)

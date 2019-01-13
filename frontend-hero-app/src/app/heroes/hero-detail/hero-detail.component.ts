@@ -32,7 +32,6 @@ export class HeroDetailComponent implements OnInit {
         alert('ERROR');
       });
   }
-  
 
   goBack(): void {
     this.location.back();
