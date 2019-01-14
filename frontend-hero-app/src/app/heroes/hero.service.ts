@@ -21,4 +21,11 @@ export class HeroService {
     .catch(error => Promise.reject(error.json() || error));
   }
 
+  // getHero(id: string): Promise<any> {
+  //   return this.http.get('http://localhost:3000/hero/' + id)
+  //   .toPromise()
+  //   .then(response => response.json())
+  //   .catch(error => Promise.reject(error.json() || error));
+  // }
+
 }

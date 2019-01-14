@@ -14,7 +14,7 @@ import { log } from 'util';
 })
 export class HeroDetailComponent implements OnInit {
 
-  @Input() hero: any[] ;
+  hero: any[] ;
   public id: string;
 
   constructor(  private route: ActivatedRoute, private heroService: HeroService, private location: Location) {
@@ -23,15 +23,26 @@ export class HeroDetailComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
   getHeroes(): void {
     this.id = this.route.snapshot.paramMap.get('id');
     this.heroService.getHeroes(this.id)
-      .then((res: any) => {this.hero = res;
-      },
-      error => {
-        alert('ERROR');
-      });
+      .then( res => {
+        this.hero = res;
+          for ( let i = 0 ; i < this.hero.length ; i++) {
+            if ( this.hero[i].heroId === Number(this.id)) {
+              this.hero = this.hero[i];
+              return this.hero;
+            }
+          }
+        },
+        error => {
+          alert( 'ERROR' );
+        }
+      );
   }
+
+
 
   goBack(): void {
     this.location.back();

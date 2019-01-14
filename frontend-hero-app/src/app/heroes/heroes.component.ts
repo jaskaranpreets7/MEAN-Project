@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { HeroService } from './hero.service';
-import { KeyRegistry } from '@angular/core/src/di/reflective_key';
+
 
 @Component({
   selector: 'app-heroes',
