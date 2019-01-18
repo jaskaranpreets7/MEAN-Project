@@ -13,12 +13,15 @@ route.get('/heroes',function(req,res,next){
 })
 
  route.post('/addHeroes',function(req,res,next){
-     heoresDAL.addHero(heroesDetails.heroId, heroesDetails.heroName, heroesDetails.universe, heroesDetails.specialPower,heroesDetails.description).then((intId)=>{
-         console.log("inserting id: " ,intId)
-         res.json(intId);
+     heoresDAL.addHero(req.body.heroId, req.body.heroName, req.body.universe, req.body.specialPower,req.body.description)
+     .then((result)=>{
+         console.log("result ",result)
+         res.json({ "message": "Data added successfully "});
      }).catch(function(err){
          next(err);
      })
+    //  res.end();
+    //  res.status().end()
 
  })
 

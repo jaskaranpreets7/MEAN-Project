@@ -21,13 +21,16 @@ heroesDAL = function(){
          promise = con.query('INSERT INTO heroesDetails(heroId, heroName, universe, specialPower,description) VALUES(?,?,?,?,?)',
          [heroId, heroName, universe, specialPower, description])
          return promise;
-     }).then(function(intId){
-         if(intId.length > 0){
-             return intId
-         }else{
-             throw new Error('something wrong with the insertion')
+     }).then(function(result){
+         if(result.affectedRow == 0){
+            throw new Error('something wrong with the insertion')
          }
-     }).catch((err)=>{throw err})
+         return result;
+     }).catch(
+         (err)=>{
+             throw err
+            }
+        )
  }
 
 module.exports = heroesDAL;
