@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
 
 import { HeroService } from './hero.service';
 
@@ -12,13 +13,22 @@ export class HeroesComponent implements OnInit {
 
   hero: any[];
   heroes: any[];
+  tResponse: any;
   count = 0;
 
-constructor(private heroService: HeroService) {
-  this.getHeroes();
+constructor(private heroService: HeroService , private fb: FormBuilder ) {
 }
 
+addForm = this.fb.group({
+  heroId : ['', [Validators.required, Validators.maxLength(4)]],
+  heroName: ['', [Validators.required]],
+  specialPower: ['', [Validators.required]],
+  universe: ['', [Validators.required]],
+  description: ['', [Validators.required, Validators.maxLength(50)]]
+});
+
 ngOnInit() {
+  this.getHeroes();
 }
 
 getHeroes() {
@@ -37,13 +47,30 @@ getHeroes() {
 
 
 
-countLike(heroName) {
+countLike = (heroName) => {
   for (let k = 0 ; k < this.heroes.length; k++ ) {
     if (this.heroes[k].heroName === heroName ) {
       this.heroes[k].count++;
     }
   }
+}
 
+
+
+addHero = () => {
+  const data = {
+    'heroId': this.addForm.value.heroId,
+    'heroName': this.addForm.value.heroName,
+    'specialPower': this.addForm.value.specialPower,
+    'universe': this.addForm.value.universe,
+    'description': this.addForm.value.description
+  };
+  this.heroService.addHeroes(data)
+    .then(response => {
+      console.log('response', response);
+      this.tResponse = response.message;
+    }).catch(error => this.tResponse = error.message);
+    this.addForm.reset();
 }
 
 

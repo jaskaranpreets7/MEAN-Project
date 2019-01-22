@@ -9,13 +9,14 @@ import { SignInComponent } from './user/sign-in/sign-in.component';
 import { SignUpComponent } from './user/sign-up/sign-up.component';
 
 const routes: Routes = [
-  // { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+  { path: '', component: SignUpComponent},
   { path: 'heroes', component: HeroesComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'home', component: HomeComponent},
-  { path: 'detail/:id', component : HeroDetailComponent },
+  { path: 'hero/:id', component : HeroDetailComponent },
   { path: 'sign-up', component: SignUpComponent},
   { path: 'sign-in', component: SignInComponent}
+  // { path : '**', component: };
 ];
 
 @NgModule({
