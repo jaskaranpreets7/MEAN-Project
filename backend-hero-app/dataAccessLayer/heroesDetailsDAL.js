@@ -4,6 +4,7 @@ var details = require('../beans/heroesDetails');
 
 var heroesDAL = {};
 
+
 heroesDAL = function(){
     return database.then(function(con){
         promise = con.query('SELECT * FROM heroesDetails');
@@ -16,7 +17,7 @@ heroesDAL = function(){
     })
 }
 
- heroesDAL.addHero = function(heroId, heroName, universe, specialPower, description){
+heroesDAL.addHero = function(heroId, heroName, universe, specialPower, description){
      return database.then(function(con){
          promise = con.query('INSERT INTO heroesDetails(heroId, heroName, universe, specialPower,description) VALUES(?,?,?,?,?)',
          [heroId, heroName, universe, specialPower, description])
