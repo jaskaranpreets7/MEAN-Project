@@ -17,6 +17,11 @@ import { HomeComponent } from './home/home.component';
 import { UserComponent } from './user/user.component';
 import { SignInComponent } from './user/sign-in/sign-in.component';
 import { SignUpComponent } from './user/sign-up/sign-up.component';
+import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './auth.guard';
+import { AuthService } from './auth.service';
+import { SignUpService } from './user/sign-up/sign-up.service';
+import { NavComponent } from './nav/nav.component';
 
 
 @NgModule({
@@ -28,7 +33,9 @@ import { SignUpComponent } from './user/sign-up/sign-up.component';
     HomeComponent,
     UserComponent,
     SignInComponent,
-    SignUpComponent
+    SignUpComponent,
+    LoginComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +45,7 @@ import { SignUpComponent } from './user/sign-up/sign-up.component';
     HttpClientModule,
     HttpModule
   ],
-  providers: [HeroService],
+  providers: [HeroService , AuthGuard, AuthService, SignUpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

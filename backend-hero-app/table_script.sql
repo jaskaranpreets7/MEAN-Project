@@ -34,7 +34,19 @@ insert into HeroesDetails(heroId,heroName,universe,specialPower,description) val
 insert into HeroesDetails(heroId,heroName,universe,specialPower,description) values('0018','Green Arrow','DC','Bow & Arrow','Billionaire Industrialist ');
 insert into HeroesDetails(heroId,heroName,universe,specialPower,description) values('0019','Cyborg','DC','Spy','Football Player');
 insert into HeroesDetails(heroId,heroName,universe,specialPower,description) values('0020','Martian Manhunter','DC','Invisible','Alien');
+insert into HeroesDetails(heroId,heroName,universe,specialPower,description) values();
 
-select * from HeroesDetails
+select * from HeroesDetails;
 
+CREATE TABLE UsersDetails(
+firstName varchar(15)not null, 
+lastName varchar (10)not null,
+email varchar (20) not null,
+username VARCHAR (20) NOT NULL,
+password VARCHAR (20) not null,
+userID  int (4) primary key auto_increment
+);
+
+insert into UsersDetails(firstName,lastName, email, username,password,userID) values();
+select * from usersDetails;
 

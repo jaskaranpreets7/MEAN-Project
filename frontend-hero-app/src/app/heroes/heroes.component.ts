@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
+import { FormBuilder, Validators} from '@angular/forms';
 
 import { HeroService } from './hero.service';
 
@@ -67,7 +67,6 @@ addHero = () => {
   };
   this.heroService.addHeroes(data)
     .then(response => {
-      console.log('response', response);
       this.tResponse = response.message;
     }).catch(error => this.tResponse = error.message);
     this.addForm.reset();

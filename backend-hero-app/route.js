@@ -2,6 +2,7 @@ var express = require('express');
 var route = express.Router();
 var heoresDAL = require('./dataAccessLayer/heroesDetailsDAL');
 var usersDAL = require('./dataAccessLayer/userDetailsDAL');
+var USERS;
 
 
 route.get('/heroes',function(req,res,next){
@@ -24,6 +25,17 @@ route.get('/heroes',function(req,res,next){
     //  res.end();
     //  res.status().end()
  })
+
+route.get('/users',function(req,res,next){
+
+    usersDAL().then(function(result){
+        res.json(result);
+        USERS = result;
+        return USERS;
+    }).catch(function(err){
+        next(err);
+    })
+})
 
 route.post('/users', function(req,res,next){
     usersDAL.signup(req.body.firstName,req.body.lastName, req.body.email, req.body.username, req.body.password)
