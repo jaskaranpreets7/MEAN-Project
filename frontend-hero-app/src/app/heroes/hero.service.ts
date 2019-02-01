@@ -15,7 +15,7 @@ export class HeroService {
 
   constructor( private http: Http) {}
 
-  getHeroes(data: any): Promise<any> {
+  getHeroDetails(data: any): Promise<any> {
     return this.http.get('http://localhost:3000/heroes', data)
     .toPromise()
     .then(response => response.json())

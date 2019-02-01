@@ -32,7 +32,7 @@ ngOnInit() {
 }
 
 getHeroes() {
-      this.heroService.getHeroes(null)
+      this.heroService.getHeroDetails(null)
           .then( res => {
             this.heroes = res;
             for (let i = 0 ; i < this.heroes.length; i++) {
