@@ -39,8 +39,9 @@ export class SignUpComponent implements OnInit {
 
     this.signupservice.signUp(data)
       .then(res => {
-        console.log(data);
-        this.message = res; })
+        this.message = res;
+        this.router.navigate(['login']);
+      })
       .catch( err => { this.message = err; });
       alert('Signing up Successfully');
   }
