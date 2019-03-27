@@ -1,17 +1,19 @@
 var express = require("express")
 var bodyParser = require("body-parser");
-const jwt = require('jsonwebtoken');
-const expressJwt = require('express-jwt');
+var jwt = require('jsonwebtoken');
 var router= require("./route")
 var app = express() // creating an express application
 var config = require('./conifguration')
 var cors = require('cors');
 var app = express();
+
+var userDetails = require('./dataAccessLayer/userDetailsDAL')
+
 app.use(cors());
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
-// app.use('/',router);
+
 app.set('Secret', config.secret);
 app.use('/',router,function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -20,25 +22,43 @@ app.use('/',router,function(req, res, next) {
     next();
     })
 
-app.post('/auth',(req,res)=>{
-    if(req.body.username==="admin" && req.body.password === "admin"){
-             //if eveything is okey let's create our token 
-             const payload = {check:  true};
-    
-              var token = jwt.sign(payload, app.get('Secret'), {
-                    expiresIn: 120 // expires in 2 hours
-              });
+app.post('/auth', (req,res,next) =>{
 
-              res.json({
-                message: 'authentication done ',
-                token: token
-              });
-    
-                // res.json({message:"please check your password !"})
+    var result = userDetails().then(function(users){
+            return users;
+        }).catch(function(err){
+            next(err);
+        })
+
+    result.then(function(users){
         
-        }else{
-            res.json({message:"user not found !"})
-        }
+            let matched = {check: false} ;
+            usersCheck(users, matched);
+            function usersCheck(users,matched){
+                for(var i = 0; i < users.length; i++){
+                    if(req.body.username === users[i].username && req.body.password === users[i].password){
+                        matched.check = true;
+                    }
+                }
+            }
+            
+            if(matched.check){
+                //if eveything is okey let's create our token 
+                const payload = {check:  true};
+    
+                var token = jwt.sign(payload, app.get('Secret'), {
+                    expiresIn: 120 // expires in 2 hours
+                });
+
+                res.json({
+                    message: 'authentication done ',
+                    token: token
+                });
+                // res.json({message:"please check your password !"})
+            }else{
+                res.status(401).json({message:"Not Authorized!"})
+            }
+        })
     
     })
     

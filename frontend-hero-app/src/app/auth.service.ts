@@ -11,13 +11,17 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   login(data: any): Observable<boolean> {
-    console.log(data);
     return this.http.post<{token: string}>('http://localhost:3000/auth', {username : data.username, password : data.password})
       .pipe(
         map ( result => {
-          localStorage.setItem('access_token', result.token);
-        return true ;
+          if(result.token){
+            localStorage.setItem('access_token', result.token);
+            return true ;
+          }else{
+            return false;
+          }
         })
+        
       );
   }
 

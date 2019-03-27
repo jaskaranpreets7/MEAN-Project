@@ -15,7 +15,7 @@ heroes: any[] ;
   constructor(private heroService: HeroService) {}
 
   getHeroes(): void {
-   this.heroService.getHeroes(null)
+   this.heroService.getHeroDetails(null)
       .then((heroes) => {
         this.heroes = heroes;
       });

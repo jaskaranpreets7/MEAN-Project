@@ -34,12 +34,12 @@ export class LoginComponent implements OnInit {
 
     if (this.loginForm.valid) {
        this.auth.login(data)
-      .subscribe(
-        (result) => {
-          this.loginForm.reset();
-          this.router.navigate(['home']);
-        },
-        (error) => this.error = 'Could not authenticate'
+        .subscribe(
+          (result) => {
+            this.loginForm.reset();
+            this.router.navigate(['home']);
+          },
+          (error) => this.error = 'Could not authenticate'
       );
     }
   }
